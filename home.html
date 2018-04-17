@@ -16,6 +16,7 @@
 </head>
 <body>
 <h1>Proyecto Nery Herrarte</h1>
+<span id="greeting"></span>
 <div id="library">
   <h3>Users</h3>
   <div id="users">
@@ -60,7 +61,7 @@
           todaysDate.getFullYear();
     return greetingString;
   }
-  $('#greeting').text(greeting('Pedro'));
+  $('#greeting').text(greeting('Nery'));
 </script>
 
 <!-- ======================== UNIT-TESTS LOGIC ==================== -->
@@ -80,7 +81,21 @@
 <script>
   function testTheTruth() {
     testResults('1 is equal to 1', 1 === 1);
-  }
+    var todaysDate = new Date();
+    
+	
+	testResults('Es 2018', todaysDate.getFullYear()=='2018');
+	testResults('Es 2017', todaysDate.getFullYear()=='2017');
+    testResults('Es Upper ', changeNameToUppercase('Nery')=='Nery');
+    testResults('Es Upper ', changeNameToUppercase('Abner')=='ABNER');
+
+	testResults('Es 2018 ', greeting('Nery').indexOf('2018')>1);
+	testResults('Es 2018 ', greeting('Abner').indexOf('2017')>1);
+
+	testResults('1 is not equal to 2', 1 != 2);  
+ }
+ 
+ 
   (function() {
     testTheTruth();
   })()
